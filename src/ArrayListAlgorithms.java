@@ -61,8 +61,8 @@ public class ArrayListAlgorithms {
      */
     public static void replaceWithCaps(ArrayList<String> wordList) {
         for (int i = 0; i < wordList.size(); i++) {
-            if (wordList.get(i).substring(wordList.get(i).length() - 1).equals("s")) {
-                wordList.set(i, wordList.get(i).toUpperCase(Locale.ROOT));
+            if (wordList.get(i).endsWith("s")) {
+                wordList.set(i, wordList.get(i).toUpperCase());
             }
         }
     }
@@ -180,7 +180,7 @@ public class ArrayListAlgorithms {
     /**
      * Adds an uppercase version of each string directly AFTER the string
      * in wordList; for example, if wordList is ["hello", "my", "best", "friend"]
-     * this this method modifies wordList to be:
+     * this method modifies wordList to be:
      * ["hello", "HELLO", "my", "MY", "best", "BEST", "friend", "FRIEND"]
      * <p>
      * Assume all words have lowercase letters originally
@@ -197,10 +197,10 @@ public class ArrayListAlgorithms {
     }
 
     /**
-     * Appends an uppercase version of each string to the END of of wordList;
+     * Appends an uppercase version of each string to the END of wordList;
      * the uppercase versions appear in the same order as the lowercase versions
      * for example, if wordList is ["hello", "my", "best", "friend"]
-     * this this method modifies wordList to be:
+     * this method modifies wordList to be:
      * ["hello", "my", "best", "friend", "HELLO", "MY", "BEST", "FRIEND"]
      * <p>
      * Assume all words have lowercase letters originally
@@ -233,7 +233,7 @@ public class ArrayListAlgorithms {
         ArrayList<String> reverse = new ArrayList<>();
         String wordToAdd = "";
         for (int i = 0; i < sentence.length(); i++) {
-            if (sentence.substring(i, i + 1).equals(" ") || i == sentence.length() - 1) {
+            if (sentence.charAt(i) == ' ' || i == sentence.length() - 1) {
                 if (i == sentence.length() - 1) {
                     wordToAdd += sentence.substring(i, i + 1);
                 }
@@ -264,7 +264,7 @@ public class ArrayListAlgorithms {
     public static void moveBWords(ArrayList<String> wordList) {
         int insert = 0;
         for (int i = 0; i < wordList.size(); i++) {
-            if (wordList.get(i).substring(0, 1).equals("b")) {
+            if (wordList.get(i).charAt(0) == 'b') {
                 wordList.add(insert, wordList.remove(i));
                 insert++;
             }
